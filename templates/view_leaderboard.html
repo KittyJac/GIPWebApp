@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Leaderboards</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+        <script src="{{url_for('static', filename='javascript/main.js')}}"></script>
+	</head>
+	<body>
+			<div class="col-md-8">
+				<div class="container-fluid">
+                    {% for i in leaderboards %}
+                    <h2 class="title"><u>{{i.Name}}</u></h2>
+                    <br>
+                    <h4>Leaderboard made by: {{username}}</h4>
+                    <br><br>
+                    <table class="table">
+                            <tbody>
+                                <tr class="b">
+                                    <th>Ranking name</th>
+                                    <th>Score</th>
+                                </tr>
+                                {% for i in leaderboards %}
+                                <tr class="a">
+                                    <td>{{i.Name}}</td>
+                                    {% for l in users %}
+                                    {% if l.User_Id == i.User_Id %}
+                                    <td><a href="/{{l.Username}}">{{l.Username}}</a></td>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <!-- <td>{{i.Genre}}</td>
+                                    {% for l in users %}
+                                    <td><a href="/{{l.Username}}/{{i.Lb_Id}}"><button type="button" class="btn btn-artist" onclick="">View</button></a></td>
+                                    {% endfor %} -->
+                                </tr>
+                                {% endfor %}
+                                <!-- <tr>
+                                    <td><a href="/new-leaderboard"><button type="button" class="btn btn-artist">New Leaderboard</button></a></td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+					{% endfor %}
+				</div>
+			</div>
+	</body>
+</html>

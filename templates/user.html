@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Leaderboards</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+        <script src="{{url_for('static', filename='javascript/main.js')}}"></script>
+	</head>
+	<body>
+		
+		<div class="nav-wrapper">
+			<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="500">
+				<form class="navbar-form navbar-left">
+					
+					<input type="text" id="input" class="form-control" placeholder="Search">
+					
+					<button type="button" class="btn btn-artist" onclick="search()">Search</button>
+					
+				</form>
+				<form class="navbar-form navbar-left">
+			      	<div class="form-group">
+			    		<select id="select" class="select">
+			    			  <option>Genre</option>
+				              <option>Option 1</option>
+				              <option>Option 2</option>
+			          	</select>
+			      	</div>
+	      			<button type="button" class="btn btn-artist" onclick="filter()">Search</button>
+	    		</form>
+			</nav>
+		</div>
+
+		<div class="row">
+			<div class="col-md-8">
+				<div class="container-fluid">
+					<h2 class="title"><u>{{username.upper()}}'S LEADERBOARDS</u></h2>
+					<table class="table">
+						<tbody>
+							<tr class="b">
+								<th>Title</th>
+								<th>Author</th>
+								<th>Genre</th>
+								<th>Display</th>
+							</tr>
+                            {% for i in leaderboards %}
+                            {% for l in users %}
+                            {% if l.Username == username %}
+							<tr class="a">
+								<td>{{i.Name}}</td>
+								{% for l in users %}
+								{% if l.User_Id == i.User_Id %}
+								<td><a href="/{{l.Username}}">{{l.Username}}</a></td>
+								{% endif %}
+								{% endfor %}
+								<td>{{i.Genre}}</td>
+								{% for l in users %}
+								<td><button type="button" class="btn btn-artist" onclick="">View</button></td>
+								{% endfor %}
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h1>{{username}}'s info:</h1>
+                <br/>
+				<h3>Username: {{username}}</h3>
+				{% for i in leaderboards %}
+				<h3>Description: {{i.Description}}</h3>
+				{% endfor %}
+			</div>
+		</div>
+	</body>
+</html>

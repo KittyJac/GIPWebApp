@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Leaderboards</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+        <script src="{{url_for('static', filename='javascript/main.js')}}"></script>
+	</head>
+	<body>
+		<div class="container-fluid top">
+		<div class="vert">
+			<h1>Leaderboards</h1>
+			<h4>In this app you can create your own leaderboard! Try it out!</h4>
+			<button data-toggle="collapse" data-target="#by" class="btn btn-artist">Made by</button>
+			<div id="by" class="collapse">
+                <br/>
+				<a href="https://github.com/KittyJ-Immalle">Kitty Jacobs</a>
+			</div>
+		</div>
+		</div>
+		<div class="nav-wrapper">
+			<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="500">
+				<form class="navbar-form navbar-left">
+					
+					<input type="text" id="input" class="form-control" placeholder="Search">
+					
+					<button type="button" class="btn btn-artist" onclick="search()">Search</button>
+					
+				</form>
+				<form class="navbar-form navbar-left">
+			      	<div class="form-group">
+			    		<select id="select" class="select">
+			    			  <option>Genre</option>
+				              <option>Option 1</option>
+				              <option>Option 2</option>
+			          	</select>
+			      	</div>
+	      			<button type="button" class="btn btn-artist" onclick="filter()">Search</button>
+	    		</form>
+			</nav>
+		</div>
+
+		
+			<div class="col-md-12">
+				<div class="container-fluid">
+					<h2 class="title"><u>ALL LEADERBOARDS</u></h2>
+					<table class="table">
+						<tbody>
+							<tr class="b">
+								<th>Title</th>
+								<th>Author</th>
+								<th>Genre</th>
+								<th>Display</th>
+							</tr>
+							<tr class="a">
+								<td>First leaderboard</td>
+								<td><a href="/Kitty">Kitty</a></td>
+								<td>Movies</td>
+								<td><button type="button" class="btn btn-artist">View</button></td>
+							</tr>
+							{% for i in leaderboards %}
+							<tr class="a">
+								<td>{{i.Name}}</td>
+								{% for l in users %}
+								{% if l.User_Id == i.User_Id %}
+								<td><a href="/{{l.Username}}">{{l.Username}}</a></td>
+								{% endif %}
+								{% endfor %}
+								<td>{{i.Genre}}</td>
+								{% for l in users %}
+								<td><a href="/{{l.Username}}/{{i.Lb_Id}}"><button type="button" class="btn btn-artist" onclick="">View</button></a></td>
+								{% endfor %}
+							</tr>
+							{% endfor %}
+							<tr>
+								<td><a href="/new-leaderboard"><button type="button" class="btn btn-artist">New Leaderboard</button></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+		
+	</body>
+</html>

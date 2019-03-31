@@ -1,0 +1,94 @@
+body {
+	background-color: #E8FFF2;
+}
+.top {
+	text-align: center;
+	height: 500px;
+	background-color:#41C379;
+	color:#ffffff;
+}
+.vert {
+	padding: 150px;
+}
+.btn-artist { 
+  color: #ffffff; 
+  background-color: #2C8F68; 
+  border-color: #1C6E53; 
+} 
+ 
+.btn-artist:hover, 
+.btn-artist:focus, 
+.btn-artist:active, 
+.btn-artist.active, 
+.open .dropdown-toggle.btn-artist { 
+  color: #ffffff; 
+  background-color: #247A4C; 
+  border-color: #1C6E53; 
+} 
+ 
+.btn-artist:active, 
+.btn-artist.active, 
+.open .dropdown-toggle.btn-artist { 
+  background-image: none; 
+} 
+ 
+.btn-artist.disabled, 
+.btn-artist[disabled], 
+fieldset[disabled] .btn-artist, 
+.btn-artist.disabled:hover, 
+.btn-artist[disabled]:hover, 
+fieldset[disabled] .btn-artist:hover, 
+.btn-artist.disabled:focus, 
+.btn-artist[disabled]:focus, 
+fieldset[disabled] .btn-artist:focus, 
+.btn-artist.disabled:active, 
+.btn-artist[disabled]:active, 
+fieldset[disabled] .btn-artist:active, 
+.btn-artist.disabled.active, 
+.btn-artist[disabled].active, 
+fieldset[disabled] .btn-artist.active { 
+  background-color: #2C8F68; 
+  border-color: #1C6E53; 
+} 
+ 
+.btn-artist .badge { 
+  color: #2C8F68; 
+  background-color: #ffffff; 
+}
+
+.affix {
+      top: 0;
+      width: 100%;
+      z-index: 1;
+}
+
+.affix + .container-fluid {
+      padding-top: 70px;
+}
+.select {
+   background-color:#ffffff;
+   height: 34px;
+   width: 240px;
+   border-radius: 5px;
+}
+.row {
+  margin-right: auto;
+}
+.form {
+  padding-top:10px;
+  text-align: center;
+  font-size: 150%;
+}
+.title {
+	text-align: center;
+}
+.nav-wrapper {
+  min-height: 70px;
+}
+.artist-name {
+  font-size:150%;
+}
+
+td,th {
+	font-size: 150%;
+}
