@@ -57,38 +57,3 @@ function filter() {
 	}
 	
 }
-
-function makeLeaderboard() {
-	var titleLeaderboard, description, genre, author;
-
-	titleLeaderboard = document.getElementById('titleLeaderboard');
-	description = document.getElementById('description');
-	genre = document.getElementById('genre');
-	author = document.getElementById('author');
-
-	$('#submit').click(function() {
-		var formdata = serialize();
-		$.ajax({
-					type: 'POST',
-				 contentType: 'application/json',
-				 data: JSON.stringify(formdata),
-				 dataType: 'json',
-				 url: 'http://192.168.57.223:5000/createform',
-				 success: function (e) {
-						 console.log(e);
-						 window.location = "http://192.168.57.223:5000/preview";
-				 },
-				 error: function(error) {
-				 console.log(error);
-		 }
-		 });
- });
-
-	// $.ajax({
-	// 	type: "POST",
-	// 	url: "../main.py",
-	// 	data: { 'titleLeaderboard': titleLeaderboard, 'description': description, 'genre': genre, 'author': author}
-	// }).done(function( o ) {
-	// 	 console.log(data)
-	// });
-}

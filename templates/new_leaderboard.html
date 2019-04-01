@@ -31,21 +31,21 @@
 			<div class="col-md-12">
 				<div class="container-fluid">
 					<h2 class="title"><u>NEW LEADERBOARD</u></h2>
-					<form class="form" method="post" action="./edit_db.py">
+					<form class="form" method="post" action="/new-leaderboard">
                         Title leaderboard:<br>
-                        <input type="text" id="titleLeaderboard">
+                        <input type="text" name="titleLeaderboard">
                         <br>
                         Description:<br>
-						<input type="text" id="description">
+						<input type="text" name="description">
 						<br>
 						Genre:<br>
-						<input type="text" id="genre">
+						<input type="text" name="genre">
 						<br>
 						Author:<br>
-						<input type="text" id="author">
+						<input type="text" name="author">
 						<br>
                         <br>
-                        <button type="button" onclick="makeLeaderboard()">Submit</button>
+                        <button type="submit" action="Submit">Submit</button>
 					  </form> 
 					  <br>
 				</div>

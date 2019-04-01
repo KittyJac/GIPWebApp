@@ -18,9 +18,9 @@ def add_leaderboard(titleLeaderboardInput, descriptionInput, genreInput, authorI
 
     for user in users:
         if user.Username == author:
-            c.execute("INSERT INTO Leaderboards(Name, User_Id, Description, Genre) VALUES('"+ titleLeaderboard +"', "+ user.User_Id +", "+ description +", "+ genre +")")
+            c.execute("INSERT INTO Leaderboards(Name, User_Id, Description, Genre) VALUES( ?, ?, ?, ?)", (str(titleLeaderboard),str(user.User_Id),str(description),str(genre)))
         else:
-            c.execute("INSERT INTO Leaderboards(Name, User_Id, Description, Genre) VALUES('"+ titleLeaderboard +"', "+ (len(users) + 1) +", "+ description +", "+ genre +")")
+            c.execute("INSERT INTO Leaderboards(Name, User_Id, Description, Genre) VALUES(?, ?, ?, ?)", (str(titleLeaderboard),str((len(users) + 1)),str(description),str(genre)))
  
     #c.execute("INSERT INTO Users(Username, Description, Password) VALUES('Kitty Jacobs','Student at Immaculata Institute', 'aaa')")
 
